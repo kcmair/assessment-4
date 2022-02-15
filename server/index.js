@@ -3,7 +3,6 @@ const cors = require("cors");
 
 const app = express();
 
-
 app.use(cors());
 
 app.use(express.json()); // When we want to be able to accept JSON.
@@ -42,12 +41,9 @@ app.get("/api/fortune", (req, res) => {
 });
 
 app.put("/api/addCompliment", (req, res) => {
-  const request = req.body
-  const response = res.body
-  console.log(request)
-  console.log(response)
-
-  res.status(200).send(`${response} has been added to the list of compliments`);
+  const {compliment} = req.body
+  compliments.push(compliment);
+  res.status(200).send(`${compliment} has been added to the list of compliments.`);
 });
 
 app.listen(4000, () => console.log("Server running on 4000"));
